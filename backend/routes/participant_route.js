@@ -22,7 +22,6 @@ router.post('/register/:cycle_id', async (req, res) => {
         }
         const newParticipant = {
             fullname: req.body.fullname,
-            foundation: req.body.foundation,
             landLine: req.body.landLine,
             fax: req.body.fax,
             mobilePhone: req.body.mobilePhone,

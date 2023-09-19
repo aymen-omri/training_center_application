@@ -27,7 +27,7 @@ router.get('/by_id/:id', async (req, res) => {
 //add former
 router.post('/add', (req, res) => {
     Former.create({
-        fullname: req.body.fullName,
+        fullname: req.body.fullname,
         speciality: req.body.speciality,
         direction: req.body.direction,
     }).then((former) => {
@@ -40,7 +40,7 @@ router.post('/add', (req, res) => {
 //update former
 router.put('/update/:id', (req, res) => {
     Former.update({
-        fullname: req.body.fullName,
+        fullname: req.body.fullname,
         speciality: req.body.speciality,
         direction: req.body.direction,
     },

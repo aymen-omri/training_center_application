@@ -14,7 +14,7 @@ const Participant = sequelize.define('Participant', {
     },
     foundation: {
         type: DataTypes.STRING(255),
-        allowNull: false
+        allowNull: true
     },
     landLine: {
         type: DataTypes.INTEGER,

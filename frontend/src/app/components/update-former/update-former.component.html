@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>
+  Update former
+</h2>
+<mat-dialog-content>
+  <div class="center-content">
+    <div class="alert alert-danger" *ngIf="errMessage">{{ errMessage }}</div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input matInput type="text" formControlName="fullname" required>
+        <mat-error *ngIf="myForm.get('fullname')!.hasError('required')">Full Name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Speciality</mat-label>
+        <input matInput formControlName="speciality" required>
+        <mat-error *ngIf="myForm.get('speciality')!.hasError('required')">Speciality is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Direction</mat-label>
+        <input matInput type="text" formControlName="direction" required>
+        <mat-error *ngIf="myForm.get('direction')!.hasError('required')">Direction is required</mat-error>
+      </mat-form-field>
+
+      <div class="buttons">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      </div>
+    </form>
+  </div>
+
+</mat-dialog-content>

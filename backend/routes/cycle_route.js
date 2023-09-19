@@ -47,7 +47,7 @@ router.post('/add', (req, res) => {
 
 //update cycle
 router.put('/update/:id', (req, res) => {
-    Former.update({
+    Cycle.update({
         name: req.body.name,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
@@ -55,7 +55,7 @@ router.put('/update/:id', (req, res) => {
     },
         {
             where: {
-                former_id: req.params.id
+                cycle_id: req.params.id
             }
         }
     ).then(result => {

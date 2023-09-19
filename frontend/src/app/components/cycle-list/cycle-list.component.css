@@ -1,0 +1,19 @@
+.example-card {
+  max-width: 300px;
+}
+
+.cycle-container,
+.filter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 15px;
+}
+
+.all{
+  display: flex;
+  flex-direction: column;
+}

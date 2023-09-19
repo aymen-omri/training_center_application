@@ -22,9 +22,9 @@ app.use(require('./models/participant'));
 app.use(require('./models/former'));
 app.use(require('./models/cycle'));*/
 Participant.belongsToMany(Cycle, { through: 'partCycle' });
-Cycle.belongsToMany(Participant , {through : 'partCycle'});
-Former.belongsToMany(Cycle , {through : 'FormerCycle'})
-Cycle.belongsToMany(Former , {through : 'FormerCycle'})
+Cycle.belongsToMany(Participant, { through: 'partCycle' });
+Former.belongsToMany(Cycle, { through: 'FormerCycle' })
+Cycle.belongsToMany(Former, { through: 'FormerCycle' })
 
 
 
@@ -32,10 +32,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use('/cycle',require('./routes/cycle_route'));
-app.use('/former',require('./routes/former_route'));
-app.use('/part',require('./routes/participant_route'));
-app.use('/auth',require('./routes/auth_route'));
+app.use('/cycle', require('./routes/cycle_route'));
+app.use('/former', require('./routes/former_route'));
+app.use('/part', require('./routes/participant_route'));
+app.use('/auth', require('./routes/auth_route'));
 
 
 
@@ -45,7 +45,7 @@ app.use('/auth',require('./routes/auth_route'));
     console.log(err);
 });*/
 
-sequelize.sync().then(() => {
+sequelize.sync({ force: true }).then(() => {
 
     console.log('tables created successfully!');
 
