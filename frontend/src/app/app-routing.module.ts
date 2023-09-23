@@ -7,15 +7,17 @@ import { AddFormerComponent } from './components/add-former/add-former.component
 import { CycleListComponent } from './components/cycle-list/cycle-list.component';
 import { AddCycleComponent } from './components/add-cycle/add-cycle.component';
 import { RegisterParticipantComponent } from './components/register-participant/register-participant.component';
+import { AuthGuard } from './utils/guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: AdminLoginComponent },
-  { path: 'part_list', component: ParticipantListComponent },
-  { path: 'former_list', component: FormerListComponent },
-  { path: 'add_former', component: AddFormerComponent },
+  { path: 'part_list', component: ParticipantListComponent, canActivate: [AuthGuard] },
+  { path: 'former_list', component: FormerListComponent, canActivate: [AuthGuard] },
+  { path: 'add_former', component: AddFormerComponent, canActivate: [AuthGuard] },
   { path: 'cycle_list', component: CycleListComponent },
-  { path: 'add_cycle', component: AddCycleComponent },
-  { path: 'register_part', component: RegisterParticipantComponent }
+  { path: 'add_cycle', component: AddCycleComponent, canActivate: [AuthGuard] },
+  { path: 'register_part', component: RegisterParticipantComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'cycle_list', }
 
 ];
 

@@ -5,6 +5,9 @@
         <mat-icon>person</mat-icon>
         Formers List
       </p>
+      <button mat-raised-button color="primary" routerLink="/add_former">
+        <mat-icon>add</mat-icon> add former
+      </button>
       <mat-form-field class="search">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" [(ngModel)]="search" placeholder="Ex. ium" #input>

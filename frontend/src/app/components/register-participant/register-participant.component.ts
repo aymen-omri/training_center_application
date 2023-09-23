@@ -38,7 +38,7 @@ export class RegisterParticipantComponent implements OnInit {
       });
     } else {
       console.log(this.myForm.errors)
-      this.errMessage = "Form is invalid or idCycle is not set.";
+      this.errMessage = "Invalid input!";
     }
   }
 

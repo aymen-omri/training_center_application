@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { UpdateCycleComponent } from './components/update-cycle/update-cycle.component';
 import { AddCycleComponent } from './components/add-cycle/add-cycle.component';
 import { RegisterParticipantComponent } from './components/register-participant/register-participant.component';
+import { PartListComponent } from './components/part-list/part-list.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { RegisterParticipantComponent } from './components/register-participant/
     UpdateCycleComponent,
     AddCycleComponent,
     RegisterParticipantComponent,
+    PartListComponent,
   ],
   imports: [
     BrowserModule,

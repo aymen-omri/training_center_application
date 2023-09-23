@@ -4,6 +4,7 @@ import { Cycle } from 'src/app/models/cycle';
 import { CycleService } from 'src/app/services/cycle.service';
 import { UpdateCycleComponent } from '../update-cycle/update-cycle.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { PartListComponent } from '../part-list/part-list.component';
 
 @Component({
   selector: 'app-cycle-list',
@@ -13,19 +14,20 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CycleListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCycles();
-    if(!this.authService.isLoggedIn()){
-      this.show = false ;
+    if (!this.authService.isLoggedIn()) {
+      this.show = false;
     }
 
   }
 
-  constructor(private cycleService: CycleService, private dialog: MatDialog , private authService : AuthService) { }
+  constructor(private cycleService: CycleService, private dialog: MatDialog, private authService: AuthService) { }
   cycles: Cycle[] = [];
   search: string = "";
   start: Date | undefined;
   end: Date | undefined;
+  room: number | undefined;
   filterCycles: Cycle[] = [];
-  show:boolean = true ; 
+  show: boolean = true;
 
   getAllCycles() {
     this.cycleService.getAllCycles().subscribe((data: any) => {
@@ -40,6 +42,7 @@ export class CycleListComponent implements OnInit {
       let startMatch = true;
       let endMatch = true;
       let nameMatch = true;
+      let roomMatch = true;
 
       if (this.start) {
         startMatch = new Date(a.startDate).getTime() >= new Date(this.start).getTime();
@@ -53,7 +56,11 @@ export class CycleListComponent implements OnInit {
         nameMatch = a.name.toLowerCase().includes(this.search.toLowerCase());
       }
 
-      return startMatch && endMatch && nameMatch;
+      if (this.room) {
+        roomMatch = a.roomNumber == this.room;
+      }
+
+      return startMatch && endMatch && nameMatch && roomMatch;
     });
   }
 
@@ -73,6 +80,20 @@ export class CycleListComponent implements OnInit {
         console.error("Error", err);
       }
     });
+  }
+
+  openParticipants(part: any[]) {
+    this.dialog.open(PartListComponent, {
+      maxWidth: '600px',
+      data: { part: part }
+    })
+  }
+
+  selectedCycle: any;
+  showPart: boolean = false;
+  selectCycle(cycle: any) {
+    this.selectedCycle = cycle;
+    this.showPart = true;
   }
 
 }
